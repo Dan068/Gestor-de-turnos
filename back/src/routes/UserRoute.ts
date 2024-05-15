@@ -1,19 +1,23 @@
-import { Router } from "express";
+import {Router} from 'express';
+import { createdUsersController, getUsersController, deleteUsersController, getUserIdController, loginUserController } from '../controllers/userControler';
+//import auth from '../middlewares/autenticacion';
 
-const userRouter:Router = Router()
+const userRoute: Router = Router() 
+
 //GET /users => Obtener el listado de todos los usuarios.
-userRouter.get('/users', );
+userRoute.get('/', getUsersController);
 
 //POST /users/register => Registro de un nuevo usuario.
-userRouter.post('/users', )
+userRoute.post('/register', createdUsersController);
 
 //GET /users/:id => Obtener el detalle de un usuario específico.
-userRouter.get('/users', )
+userRoute.get('/:id', getUserIdController)
 
 //POST /users/login => Login del usuario a la aplicación.
-userRouter.post('/users', )
+userRoute.post('/login', loginUserController )
 
 //DELETE /users => Eliminacion de un usuario
-userRouter.delete('/users', )
+userRoute.delete('/', deleteUsersController)
 
-export default userRouter
+
+export  default userRoute;

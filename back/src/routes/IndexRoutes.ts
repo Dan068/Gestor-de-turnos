@@ -1,9 +1,10 @@
 import {Router} from 'express';
-import userRouter from './UserRoute';
+import userRoute from './UserRoute';
+import appointmentRoute from './AppointmentsRoute';
+
 
 
 const router: Router = Router();
-router.use('/users', userRouter)
-
-
+router.use('/users', userRoute);
+router.use('/appointments', appointmentRoute)
 export default router;

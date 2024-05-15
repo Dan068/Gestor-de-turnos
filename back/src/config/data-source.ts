@@ -1,5 +1,10 @@
-import { DataSource } from "typeorm";
-import { DB_PASSWORD } from "./envs";
+import { DataSource } from "typeorm"
+import {  UserEntity } from "../entities/UserEntity"
+import { AppointmentsEntity } from "../entities/AppointmentsEntity"
+import { CredentialsIdEntity } from "../entities/CredentialsEntity"
+import { DB_PASSWORD } from "./envs"
+
+
 
 export const AppDataSource = new DataSource({
     type: "postgres",
@@ -8,11 +13,11 @@ export const AppDataSource = new DataSource({
     username: "postgres",
     password: DB_PASSWORD,
     database: "users",
-    //dropSchema: true, //esta propiedad borra
-    // los datos que ya tenga cargada la base de datos. 
+    dropSchema: true,
     synchronize: true,
     logging: ['error'],
-    entities: [],
+    entities: [UserEntity, AppointmentsEntity, CredentialsIdEntity],
     subscribers: [],
     migrations: [],
+
 })
